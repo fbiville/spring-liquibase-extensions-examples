@@ -1,0 +1,34 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="create_beers_table" author="fbiville">
+        <createTable tableName="beers">
+            <column name="id" type="integer" autoIncrement="true" />
+            <column name="brand" type="varchar(255)">
+                <constraints unique="true" />
+            </column>
+            <column name="description" type="text" />
+        </createTable>
+    </changeSet>
+    <changeSet id="add_beers" author="fbiville">
+        <insert tableName="beers">
+            <column name="brand" value="HINEKEN" />
+            <column name="description" value="Heineken Lager Beer was first brewed by Gerard Adriaan Heineken in 1873. The beer is made of purified water, malted barley, hops, and yeast. In 1886 H. Elion finished the development of the Heineken A-yeast, which is still used in the brewing process today." />
+        </insert>
+        <insert tableName="beers">
+            <column name="brand" value="BUDWEISER" />
+            <column name="description" value="The name Budweiser is genitive, meaning 'of Budweis.' In most European countries American Budweiser is not labelled as Budweiser but as Bud, and the name Budweiser refers to the original Czech beer, Budweiser Budvar, except for Sweden, Ireland and the United Kingdom, where both beers are sold as Budweiser." />
+        </insert>
+        <insert tableName="beers">
+            <column name="brand" value="DELIRIUM TREMENS" />
+            <column name="description" value="Delirium Tremens was launched on 26 December 1989. The beer uses three different yeasts and is packaged in a bottle that is painted to resemble cologne ceramics." />
+        </insert>
+        <insert tableName="beers">
+            <column name="brand" value="PAULANER WEIZENBIER" />
+            <column name="description" value="Paulaner is a German brewery, established in 1634 in Munich by the Minim friars of the Neudeck ob der Au cloister. The mendicant order and the brewery are named after Francis of Paola, the founder of the order. Paulaner is one of the six breweries who provide beer for Oktoberfest, the German beer festival dating from 1810." />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
