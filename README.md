@@ -2,8 +2,8 @@
 
 ## (Temporary) setup
 
- 1. Clone [this forked version](https://github.com/fbiville/liquibase) of Liquibase
- 1. `cd path/to/liquibase/fork; git checkout 3.0.x; mvn clean install -DskipTests`
+ 1. Clone [Liquibase](https://github.com/liquibase/liquibase)
+ 1. `cd path/to/liquibase; git checkout 3.0.x; mvn clean install -DskipTests`
  1. Clone [spring-liquibase-extensions](https://github.com/LateralThoughts/spring-liquibase-extensions)
  1. `cd path/to/spring-liquibase-extensions; mvn clean install`
  1. Clone [me](https://github.com/LateralThoughts/spring-liquibase-extensions-examples)

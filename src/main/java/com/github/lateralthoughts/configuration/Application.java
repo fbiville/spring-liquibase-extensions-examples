@@ -42,7 +42,7 @@ public class Application {
     public SpringLiquibaseChecker springLiquibaseChecker() {
         SpringLiquibaseChecker liquibaseChecker = new SpringLiquibaseChecker();
         liquibaseChecker.setDataSource(dataSource());
-        liquibaseChecker.setIgnoringClasspathPrefix(true);
+        liquibaseChecker.setIgnoreClasspathPrefix(true);
         liquibaseChecker.setChangeLog("classpath:META-INF/master.xml");
         return liquibaseChecker;
     }
