@@ -1,15 +1,5 @@
 # Spring Liquibase extensions: examples
 
-## (Temporary) setup
-
- 1. Clone [Liquibase](https://github.com/liquibase/liquibase)
- 1. `cd path/to/liquibase; git checkout 3.0.x; mvn clean install -DskipTests`
- 1. Clone [spring-liquibase-extensions](https://github.com/LateralThoughts/spring-liquibase-extensions)
- 1. `cd path/to/spring-liquibase-extensions; mvn clean install`
- 1. Clone [me](https://github.com/LateralThoughts/spring-liquibase-extensions-examples)
-
-And now read `Scenario steps` if you're in a hurry.
-
 ## SpringLiquibaseChecker
 
 ### Application

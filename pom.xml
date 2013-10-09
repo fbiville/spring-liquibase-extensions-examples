@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.0.6-SNAPSHOT</version>
+                <version>3.0.6</version>
                 <configuration>
                     <outputFileEncoding>UTF-8</outputFileEncoding>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
