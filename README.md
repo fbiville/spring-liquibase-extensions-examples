@@ -20,7 +20,10 @@ to always execute).
 
 ### Scenario steps
 
+#### Blocked!
+
  * `cd path/to/spring-liquibase-extensions-examples`
+ * `git checkout -f almost_fix_budweiser`
  * `mvn clean package` #`clean` in case you built it before, else drop it
  * `java -jar target/spring-liquibase-checker.jar`
 
@@ -29,17 +32,21 @@ And BOOM! An error message similar to the following one should be displayed:
 <pre>
     ... com.github.lateralthoughts.liquibase.UnexpectedLiquibaseChangesetException:
     --
-    2 changeset(s) has/have to run.
+    3 changeset(s) has/have to run.
         create_beers_table (META-INF/migrations/init.xml)
         add_beers (META-INF/migrations/init.xml)
-    This does *NOT* include changesets marked as 'alwaysRun'
+        always_and_on_change (META-INF/migrations/alwaysAndOnChange.xml)
+    This does *NOT* include changesets marked as 'alwaysRun'...
+        ...(unless they are marked as 'runOnChange' and have been altered).
     --
 </pre>
 
 Indeed, dude! Those migrations have not been run yet!
 
-_Please note there is a 3rd migration in this app, but `SpringLiquibaseChecker` wisely ignores it
-given this migration is configured to always run._
+_Please note there is another migration in this app (`always.xml`), but `SpringLiquibaseChecker` wisely ignores it
+given this migration is configured to always run (and is not supposed to run on change)._
+
+#### Fixed!
 
 Then, let's fix it and finally start the app:
 
@@ -49,6 +56,43 @@ Then, let's fix it and finally start the app:
 
 And that's it!
 Now you view your beautiful app by browsing to: `http://localhost:8080/beers`
+
+#### New fix!
+
+But damn! Another bug has been noticed.
+A brand has been misspelled again: 'BADWEISER' should be 'BUDWEISER'.
+
+However, lucky you: the faulty changeset has already been configured to run on change, you just have to fix it.
+
+To do so:
+
+ * `git checkout -f master`
+ 
+For the fun of it, try starting the app:
+
+ * `mvn package` #not clean!
+ * `java -jar target/spring-liquibase-checker.jar`
+
+You should see a familiar stack trace:
+
+<pre>
+    ... com.github.lateralthoughts.liquibase.UnexpectedLiquibaseChangesetException:
+    --
+    1 changeset(s) has/have to run.
+        always_and_on_change (META-INF/migrations/alwaysAndOnChange.xml)
+    This does *NOT* include changesets marked as 'alwaysRun'...
+        ...(unless they are marked as 'runOnChange' and have been altered).
+    --
+</pre>
+
+Although this is a changeset configured to always run, it must also be executed when its contents are altered.
+Given you just changed it, `SpringLiquibaseChecker` will prevent the application from starting.
+
+To finally fix everything:
+
+ * `mvn liquibase:updateSQL` #check the migration file, as you *always* do ;-)
+ * `mvn liquibase:update` #actually run the migrations
+ * `java -jar target/spring-liquibase-checker.jar`
 
 ## Powered By <3
 
