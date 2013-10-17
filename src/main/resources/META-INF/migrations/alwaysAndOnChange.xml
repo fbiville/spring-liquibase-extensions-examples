@@ -5,7 +5,7 @@
 
     <changeSet id="always_and_on_change" runAlways="true" runOnChange="true" author="fbiville">
         <!-- dummy migration -->
-        <sql><![CDATA[UPDATE BEERS SET brand='BADWEISER' WHERE brand='BDWEISER']]></sql>
+        <sql><![CDATA[UPDATE BEERS SET brand='BUDWEISER' WHERE brand='BADWEISER']]></sql>
     </changeSet>
 
 </databaseChangeLog>
